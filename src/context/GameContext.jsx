@@ -6,12 +6,14 @@ export const GameContext = createContext()
 function GameContextFunc(props) {
     const [showStart, setShowStart] = useState(true)
     const [showCards, setShowCards] = useState(false)
-    const [items, setItems] = useState(0)
+    const [items, setItems] = useState(10)
     const [cards, setCards] = useState([])
     const [leftIndex, setLeftIndex] = useState(0)
     const [rightIndex, setRightIndex] = useState(0)
     const [middleIndex, setMiddleIndex] = useState(0)
     const [answer, setAnswer] = useState(null)
+    const [exTries, setExTries] = useState(Math.floor(Math.log2(items)))
+    const [actualTries, setActualTries] = useState(0)
 
 
     const createCards = (items) => {
@@ -33,6 +35,7 @@ function GameContextFunc(props) {
         let totalNumb = items
         totalNumb = e.target.value
         setItems(totalNumb)
+        setExTries(Math.floor(Math.log2(totalNumb)))
     }
 
     /************Buttons handlers**************/
@@ -49,6 +52,7 @@ function GameContextFunc(props) {
         if (cards.length === 1) {
             setAnswer(cards[0])
         }
+        setActualTries(prev => prev + 1)
     }
 
     const smallerHandler = () => {
@@ -63,11 +67,16 @@ function GameContextFunc(props) {
         if (cards.length === 1) {
             setAnswer(cards[0])
         }
+        setActualTries(prev => prev + 1)
     }
 
     const equalityHandler = () => {
         setAnswer(cards[middleIndex])
     }
+
+    useEffect(() => {
+        setShowCards(false)
+    }, [answer])
 
     useEffect(() => {
         setRightIndex(cards.length - 1)
@@ -77,7 +86,7 @@ function GameContextFunc(props) {
     console.log(cards, leftIndex, middleIndex, rightIndex);
 
     return (
-        <GameContext.Provider value={{ showStart, changeScreenHandler, showCards, items, numberChangeHandler, middleIndex, greaterHandler, createCards, cards, smallerHandler, equalityHandler, answer }}>
+        <GameContext.Provider value={{ showStart, changeScreenHandler, showCards, items, numberChangeHandler, middleIndex, greaterHandler, createCards, cards, smallerHandler, equalityHandler, answer, exTries, actualTries }}>
             {props.children}
         </GameContext.Provider>
     )

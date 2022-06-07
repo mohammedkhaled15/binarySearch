@@ -5,16 +5,20 @@
 }
 body{
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: rgb(66, 61, 61) !important;
+  color: white !important;
 }
 .container{
   margin: 20px;
   text-align: center;
+  max-width: 1000px !important;
 }
 .cards-container{
-  display: grid;
-  grid-template-columns: repeat(10,minmax(20px, 1fr));
+  
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  /* justify-items: center; */
+  align-items: center;
 }
 .card{
   background-color: aquamarine;
@@ -22,9 +26,10 @@ body{
   font-weight: bold;
   border: 1px solid black;
   margin: 2px;
-  display: flex;
+  display: flex !important;
   justify-content: center;
   align-items: center;
+  transition: 2s all;
 }
 .compare-btn{
   cursor: pointer;

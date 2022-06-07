@@ -9,9 +9,9 @@ function Start() {
             {
                 showStart && (
                     <div>
-                        <div className='input-group m-3'>
-                            <label htmlFor='num' className='form-label m-2 fs-3'>Choose number of total Cards</label>
-                            <input type="number" id='num' className='form-control fs-2' min={10} value={items} onChange={numberChangeHandler} />
+                        <div className=' m-3'>
+                            <label htmlFor='num' className='d-block form-label m-2 fs-3'>Choose number of total Cards</label>
+                            <input type="number" id='num' className='d-block form-control fs-2' min={10} value={items} onChange={numberChangeHandler} />
                         </div>
                         <div>
                             <h1>Guess number fom 0 ~ {items - 1}</h1>

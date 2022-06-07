@@ -74,6 +74,18 @@ function GameContextFunc(props) {
         setAnswer(cards[middleIndex])
     }
 
+    const restartHandler = () => {
+        setShowStart(true)
+        setShowCards(false)
+        setItems(10)
+        setCards([])
+        setRightIndex(0)
+        setLeftIndex(0)
+        setMiddleIndex(0)
+        setAnswer(null)
+        setActualTries(0)
+    }
+
     useEffect(() => {
         setShowCards(false)
     }, [answer])
@@ -86,7 +98,7 @@ function GameContextFunc(props) {
     console.log(cards, leftIndex, middleIndex, rightIndex);
 
     return (
-        <GameContext.Provider value={{ showStart, changeScreenHandler, showCards, items, numberChangeHandler, middleIndex, greaterHandler, createCards, cards, smallerHandler, equalityHandler, answer, exTries, actualTries }}>
+        <GameContext.Provider value={{ showStart, changeScreenHandler, showCards, items, numberChangeHandler, middleIndex, greaterHandler, createCards, cards, smallerHandler, equalityHandler, answer, exTries, actualTries, restartHandler }}>
             {props.children}
         </GameContext.Provider>
     )

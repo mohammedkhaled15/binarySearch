@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { GameContext } from '../context/GameContext'
 
 function ComparingForm() {
-    const { middleIndex, greaterHandler, showCards, cards, smallerHandler, equalityHandler, answer, actualTries } = useContext(GameContext)
+    const { middleIndex, greaterHandler, showCards, cards, smallerHandler, equalityHandler, answer, actualTries, exTries, restartHandler } = useContext(GameContext)
     return (
         <>
             {showCards && (
@@ -18,7 +18,8 @@ function ComparingForm() {
                 answer && (
                     <>
                         <div className='answer badge rounded-pill bg-success fs-1'>{answer}</div>
-                        <h1>Your number is {answer} it took from me just {actualTries} {actualTries === 1 ? "try" : "tries"}</h1>
+                        <h1>Your number is {answer} it took from me just {actualTries} {actualTries === 1 ? "try" : "tries"} from {exTries}</h1>
+                        <button className='btn btn-primary' onClick={restartHandler}>Try Again!</button>
                     </>
                 )
             }

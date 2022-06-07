@@ -2,6 +2,7 @@ import './App.css';
 import Card from './components/Card';
 import ComparingForm from './components/ComparingForm';
 import Start from './components/Start';
+import "bootstrap/dist/css/bootstrap.min.css"
 
 function App() {
   

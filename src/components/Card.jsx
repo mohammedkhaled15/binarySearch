@@ -8,7 +8,7 @@ function Card() {
 
     return (showCards && (
         cards.map(el => {
-            return <div key={el} className='card badge bg-warning p-2.5 fs-1'>{el}</div>
+            return <div key={el} className='card  bg-warning p-2.5 fs-1'>{el}</div>
         })
     ))
 }
